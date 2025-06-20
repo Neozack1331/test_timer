@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO
 import os
+import eventlet
+
+eventlet.monkey_patch()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
@@ -45,4 +48,8 @@ def handle_stop_timer():
     timer_running = False
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    if os.environ.get('FLASK_ENV') == 'development':
+        app.run(debug=True, port=8000)
+    else:
+        socketio.run(app, debug=False, port=port, host='0.0.0.0') 
