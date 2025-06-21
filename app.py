@@ -1,13 +1,17 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO
 import os
+from dotenv import load_dotenv
 import eventlet
 
 eventlet.monkey_patch()
 
+# Load environment variables
+load_dotenv()
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.urandom(24)
-socketio = SocketIO(app)
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', os.urandom(24))
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 timer_running = False
 current_time = 0
