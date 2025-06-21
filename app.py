@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask import Flask, render_template
 from flask_socketio import SocketIO
 import os
 from dotenv import load_dotenv
@@ -11,11 +12,10 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', os.urandom(24))
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
 
-# Configure SocketIO for Render
-socketio.init_app(app, cors_allowed_origins="*", async_mode='eventlet',
-                  engineio_logger=True, logger=True)
+# Initialize SocketIO with eventlet
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet',
+                    engineio_logger=True, logger=True)
 
 timer_running = False
 current_time = 0
