@@ -1,0 +1,14 @@
+{
+  "name": "pomodoro-timer",
+  "version": "1.0.0",
+  "description": "シンプルなポモドーロタイマーアプリケーション",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server",
+    "deploy": "gh-pages -d ."
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "gh-pages": "^4.0.0"
+  }
+}
