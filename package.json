@@ -4,9 +4,11 @@
   "description": "シンプルなポモドーロタイマーアプリケーション",
   "main": "index.html",
   "scripts": {
-    "start": "http-server"
+    "start": "http-server",
+    "deploy": "gh-pages -d ."
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "gh-pages": "^4.0.0"
   }
 }
